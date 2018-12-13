@@ -9,6 +9,20 @@
 import UIKit
 
 class AddRegistrationTableViewController: UITableViewController  {
+    let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
+    let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
+    
+    var isCheckInDatePickerShown: Bool = false {
+        didSet {
+            checkInDatePicker.isHidden = !isCheckInDatePickerShown
+        }
+    }
+    
+    var isCheckOutDatePickerShown: Bool = false {
+        didSet {
+            checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
+        }
+    }
 
     @IBOutlet weak var firstNameTextField: UITextField!
     
@@ -39,7 +53,7 @@ class AddRegistrationTableViewController: UITableViewController  {
         let midnightToday = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = midnightToday
         checkInDatePicker.date = midnightToday
-        
+       
         
 
        
@@ -54,6 +68,71 @@ class AddRegistrationTableViewController: UITableViewController  {
         checkOutDateLabel.text = dateFormatter.string(from: checkOutDatePicker.date)
         
         
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath.section, indexPath.row) {
+        case (checkInDatePickerCellIndexPath.section, checkInDatePickerCellIndexPath.row):
+            if isCheckInDatePickerShown {
+                return 216.0
+            } else {
+               
+                return 0.0
+            }
+        case (checkOutDatePickerCellIndexPath.section, checkOutDatePickerCellIndexPath.row):
+            if isCheckOutDatePickerShown {
+                return 216.0
+            } else {
+                
+                return 0.0
+            }
+        default:
+            
+            return 44.0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+      
+        switch (indexPath.section, indexPath.row) {
+        
+        case (checkInDatePickerCellIndexPath.section, checkInDatePickerCellIndexPath.row - 1):
+        
+        if isCheckOutDatePickerShown {
+             isCheckInDatePickerShown = false
+        } else if isCheckOutDatePickerShown {
+            isCheckOutDatePickerShown = false
+            isCheckInDatePickerShown = true
+            
+        } else {
+            isCheckInDatePickerShown = true
+        
+    }
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            
+        case (checkOutDatePickerCellIndexPath.section, checkOutDatePickerCellIndexPath.row - 1) :
+            if isCheckOutDatePickerShown {
+                isCheckOutDatePickerShown = false
+            } else if isCheckInDatePickerShown {
+                isCheckInDatePickerShown = false
+                isCheckOutDatePickerShown = true
+                
+            } else {
+                isCheckOutDatePickerShown = true
+                
+            }
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            
+        default:
+        
+            break
+            
+            
+    }
     }
 
     // MARK: - Table view data source
@@ -78,6 +157,7 @@ class AddRegistrationTableViewController: UITableViewController  {
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         updateDateViews()
+        
     }
     
     
