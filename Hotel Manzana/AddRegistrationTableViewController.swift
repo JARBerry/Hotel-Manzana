@@ -57,6 +57,7 @@ class AddRegistrationTableViewController: UITableViewController  {
     
     
     
+    @IBOutlet weak var wifiSwitch: UISwitch!
     
     
     
@@ -189,6 +190,10 @@ class AddRegistrationTableViewController: UITableViewController  {
         let numberOfChildren =
             Int(numberOfChildrenStepper.value)
         
+        let hasWifi = wifiSwitch.isOn
+        
+        
+        
         print("DONE TAPPED")
         print("firstName: \(firstName)")
         print("lastName: \(lastName)")
@@ -197,6 +202,10 @@ class AddRegistrationTableViewController: UITableViewController  {
         print("CheckOut: \(checkOutDate)")
         print("numberOfAdults: \(numberOfAdults)")
         print("numberOfChildren: \(numberOfChildren)")
+        print("wifi: \(hasWifi)")
+        
+        
+        
         
     }
     
@@ -212,6 +221,15 @@ class AddRegistrationTableViewController: UITableViewController  {
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         updateNumberOfGuests()
     }
+    
+    
+    
+    @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
+        
+        // implement later
+        
+    }
+    
     
     
     
