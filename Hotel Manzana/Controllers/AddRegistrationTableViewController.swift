@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddRegistrationTableViewController: UITableViewController  {
+class AddRegistrationTableViewController: UITableViewController, SelectedRoomTypeTableViewControllerDelegate  {
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
     
@@ -24,8 +24,26 @@ class AddRegistrationTableViewController: UITableViewController  {
         }
     }
     
-    
+    var roomType: RoomType?
    
+    var registration: Registration? {
+        
+        guard let roomType = roomType else {return nil}
+        
+        let firstName = firstNameTextField.text ?? ""
+        let lastName = lastNameTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let checkInDate = checkInDatePicker.date
+        let checkOutDate = checkOutDatePicker.date
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren =
+            Int(numberOfChildrenStepper.value)
+        
+        let hasWifi = wifiSwitch.isOn
+        
+        return Registration(firstName: firstName, lastName: lastName, emailAddress: email, checkInDate:checkInDate, checkOutDate: checkOutDate, numberOfAdults:numberOfAdults, numberOfChildren:numberOfChildren, roomType:roomType, wifi: hasWifi)
+        
+    }
     
     
 
@@ -65,12 +83,16 @@ class AddRegistrationTableViewController: UITableViewController  {
     @IBOutlet weak var wifiSwitch: UISwitch!
     
     
+    @IBOutlet weak var roomTypeLabel: UILabel!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateDateViews()
+        updateNumberOfGuests()
+        updateRoomType()
         
         let midnightToday = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = midnightToday
@@ -123,6 +145,20 @@ class AddRegistrationTableViewController: UITableViewController  {
         
     }
     
+    func updateRoomType() {
+        if let roomType = roomType {
+            roomTypeLabel.text = roomType.name
+            
+        } else {
+            roomTypeLabel.text = "Not Set"
+        }
+    }
+    
+    
+    func didSelect(roomType: RoomType) {
+        self.roomType = roomType
+        updateRoomType()
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -166,38 +202,17 @@ class AddRegistrationTableViewController: UITableViewController  {
             
     }
     }
-
-    // MARK: - Table view data source
     
-   
-    @IBAction func doneBarButtonTapped(_ sender: UIBarButtonItem) {
-        let firstName = firstNameTextField.text ?? ""
-        let lastName = lastNameTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let checkInDate = checkInDatePicker.date
-        let checkOutDate = checkOutDatePicker.date
-        let numberOfAdults = Int(numberOfAdultsStepper.value)
-        let numberOfChildren =
-            Int(numberOfChildrenStepper.value)
-        
-        let hasWifi = wifiSwitch.isOn
-        
-        
-        
-        print("DONE TAPPED")
-        print("firstName: \(firstName)")
-        print("lastName: \(lastName)")
-        print("email: \(email)")
-        print("checkIn: \(checkInDate)")
-        print("CheckOut: \(checkOutDate)")
-        print("numberOfAdults: \(numberOfAdults)")
-        print("numberOfChildren: \(numberOfChildren)")
-        print("wifi: \(hasWifi)")
-        
-        
-        
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SelectRoomType" {
+            let destinationViewController = segue.destination as?
+            SelectedRoomTypeTableViewController
+            destinationViewController?.delegate = self
+            destinationViewController?.roomType = roomType
+        }
     }
+
+ 
     
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
@@ -221,6 +236,12 @@ class AddRegistrationTableViewController: UITableViewController  {
     }
     
     
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
     
     
 }
