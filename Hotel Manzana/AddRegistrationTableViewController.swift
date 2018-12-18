@@ -44,6 +44,22 @@ class AddRegistrationTableViewController: UITableViewController  {
     @IBOutlet weak var checkOutDatePicker: UIDatePicker!
     
     
+    @IBOutlet weak var numberOfAdultsLabel: UILabel!
+    
+    
+    @IBOutlet weak var numberOfAdultsStepper: UIStepper!
+    
+    
+    @IBOutlet weak var numberOfChildrenLabel: UILabel!
+    
+    
+    @IBOutlet weak var numberOfChildrenStepper: UIStepper!
+    
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +107,31 @@ class AddRegistrationTableViewController: UITableViewController  {
             return 44.0
         }
     }
+    
+    
+    func updateNumberOfGuests() {
+        numberOfAdultsLabel.text = "\(Int(numberOfAdultsStepper.value))"
+        
+        numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -144,6 +185,9 @@ class AddRegistrationTableViewController: UITableViewController  {
         let email = emailTextField.text ?? ""
         let checkInDate = checkInDatePicker.date
         let checkOutDate = checkOutDatePicker.date
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren =
+            Int(numberOfChildrenStepper.value)
         
         print("DONE TAPPED")
         print("firstName: \(firstName)")
@@ -151,6 +195,8 @@ class AddRegistrationTableViewController: UITableViewController  {
         print("email: \(email)")
         print("checkIn: \(checkInDate)")
         print("CheckOut: \(checkOutDate)")
+        print("numberOfAdults: \(numberOfAdults)")
+        print("numberOfChildren: \(numberOfChildren)")
         
     }
     
@@ -158,6 +204,13 @@ class AddRegistrationTableViewController: UITableViewController  {
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         updateDateViews()
         
+    }
+    
+    
+    
+    
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        updateNumberOfGuests()
     }
     
     
