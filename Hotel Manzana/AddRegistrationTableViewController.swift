@@ -23,6 +23,11 @@ class AddRegistrationTableViewController: UITableViewController  {
             checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
         }
     }
+    
+    
+   
+    
+    
 
     @IBOutlet weak var firstNameTextField: UITextField!
     
@@ -117,21 +122,6 @@ class AddRegistrationTableViewController: UITableViewController  {
         
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

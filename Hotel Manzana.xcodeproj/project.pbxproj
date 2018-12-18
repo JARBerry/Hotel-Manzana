@@ -12,6 +12,9 @@
 		17EB9E3D21C25C6500F6DF3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17EB9E3C21C25C6500F6DF3B /* Assets.xcassets */; };
 		17EB9E4021C25C6500F6DF3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17EB9E3E21C25C6500F6DF3B /* LaunchScreen.storyboard */; };
 		17EB9E4821C2649500F6DF3B /* AddRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB9E4721C2649500F6DF3B /* AddRegistrationTableViewController.swift */; };
+		17EB9E4C21C90AD900F6DF3B /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB9E4B21C90AD900F6DF3B /* RoomType.swift */; };
+		17EB9E4E21C90AEF00F6DF3B /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB9E4D21C90AEF00F6DF3B /* Registration.swift */; };
+		17EB9E5021C90DB800F6DF3B /* SelectedRoomTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB9E4F21C90DB800F6DF3B /* SelectedRoomTypeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		17EB9E3F21C25C6500F6DF3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17EB9E4121C25C6500F6DF3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17EB9E4721C2649500F6DF3B /* AddRegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTableViewController.swift; sourceTree = "<group>"; };
+		17EB9E4B21C90AD900F6DF3B /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
+		17EB9E4D21C90AEF00F6DF3B /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		17EB9E4F21C90DB800F6DF3B /* SelectedRoomTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedRoomTypeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,9 @@
 				17EB9E3521C25C6100F6DF3B /* AppDelegate.swift */,
 				17EB9E3921C25C6100F6DF3B /* Main.storyboard */,
 				17EB9E4721C2649500F6DF3B /* AddRegistrationTableViewController.swift */,
+				17EB9E4B21C90AD900F6DF3B /* RoomType.swift */,
+				17EB9E4F21C90DB800F6DF3B /* SelectedRoomTypeTableViewController.swift */,
+				17EB9E4D21C90AEF00F6DF3B /* Registration.swift */,
 				17EB9E3C21C25C6500F6DF3B /* Assets.xcassets */,
 				17EB9E3E21C25C6500F6DF3B /* LaunchScreen.storyboard */,
 				17EB9E4121C25C6500F6DF3B /* Info.plist */,
@@ -135,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17EB9E4E21C90AEF00F6DF3B /* Registration.swift in Sources */,
 				17EB9E4821C2649500F6DF3B /* AddRegistrationTableViewController.swift in Sources */,
 				17EB9E3621C25C6100F6DF3B /* AppDelegate.swift in Sources */,
+				17EB9E5021C90DB800F6DF3B /* SelectedRoomTypeTableViewController.swift in Sources */,
+				17EB9E4C21C90AD900F6DF3B /* RoomType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
