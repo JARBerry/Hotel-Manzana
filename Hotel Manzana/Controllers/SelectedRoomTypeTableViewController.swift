@@ -38,6 +38,7 @@ class SelectedRoomTypeTableViewController: UITableViewController {
         return RoomType.all.count
     }
 
+    // if room type selected then check mark it
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomTypeCell", for: indexPath)

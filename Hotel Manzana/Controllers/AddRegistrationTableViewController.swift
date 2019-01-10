@@ -94,6 +94,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectedRoomTyp
         updateNumberOfGuests()
         updateRoomType()
         
+        // define start date as current date
         let midnightToday = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = midnightToday
         checkInDatePicker.date = midnightToday
@@ -104,6 +105,9 @@ class AddRegistrationTableViewController: UITableViewController, SelectedRoomTyp
     }
     
     func updateDateViews() {
+        
+        //define check out date as current date + 1
+        
         checkOutDatePicker.minimumDate = checkInDatePicker.date.addingTimeInterval(86400)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -113,7 +117,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectedRoomTyp
         
         
     }
-    
+    // changes height of date picker cells when selected
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section, indexPath.row) {
         case (checkInDatePickerCellIndexPath.section, checkInDatePickerCellIndexPath.row):
@@ -136,7 +140,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectedRoomTyp
         }
     }
     
-    
+    // update number of adults and children
     func updateNumberOfGuests() {
         numberOfAdultsLabel.text = "\(Int(numberOfAdultsStepper.value))"
         
@@ -144,6 +148,8 @@ class AddRegistrationTableViewController: UITableViewController, SelectedRoomTyp
         
         
     }
+    
+    // update room type
     
     func updateRoomType() {
         if let roomType = roomType {
@@ -165,9 +171,12 @@ class AddRegistrationTableViewController: UITableViewController, SelectedRoomTyp
         tableView.deselectRow(at: indexPath, animated: true)
       
         switch (indexPath.section, indexPath.row) {
-        
+   
+            
+            
         case (checkInDatePickerCellIndexPath.section, checkInDatePickerCellIndexPath.row - 1):
         
+        // check if date picker selected
         if isCheckOutDatePickerShown {
              isCheckInDatePickerShown = false
         } else if isCheckOutDatePickerShown {
@@ -202,6 +211,9 @@ class AddRegistrationTableViewController: UITableViewController, SelectedRoomTyp
             
     }
     }
+    
+    
+    // seelct room type
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectRoomType" {
