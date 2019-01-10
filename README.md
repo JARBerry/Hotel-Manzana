@@ -1,6 +1,6 @@
 # Hotel-Manzana
 
-## Overview :
+## Overview
 A simple app to allow hotel reception staff to check-in customers.
 
 ## Features in the demo 
