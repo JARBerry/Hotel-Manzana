@@ -1,7 +1,7 @@
 # Hotel-Manzana
 
 ## Overview :
-Allow reception to check user customers with : name, due date and start date, number of people and type of room
+A simple app to allow hotel reception staff to check-in customers.
 
 ## Features in the demo 
 . Navigation controller
